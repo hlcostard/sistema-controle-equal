@@ -1,0 +1,400 @@
+/* ----------------- */
+/* Custom Properties */
+/* ----------------- */
+:root {
+  /* colors */
+  --clr-dark: 0 0% 0%;
+  --clr-light: 0 0% 30%;
+  --clr-white: 360 100% 100%;
+
+  /* font sizes */
+  --fs-900: clamp(5rem, 7vw + 1rem, 9.375rem);
+  --fs-800: 3.5rem;
+  --fs-700: 1.5rem;
+  --fs-600: 1rem;
+  --fs-500: 1rem;
+  --fs-400: 0.9375rem;
+  --fs-300: 1rem;
+  --fs-200: 0.875rem;
+}
+
+/* ----------------- */
+/* Reset             */
+/* ----------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 400;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  color: black;
+  background-color: var(--clr-white);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  outline: none;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ----------------- */
+/* Utility Classes   */
+/* ----------------- */
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.flex-center {
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+}
+
+.d-block {
+  display: block;
+}
+
+.flow > *:where(:not(:first-child)) {
+  margin-top: var(--flow-space, 1rem);
+}
+
+.container {
+  padding-inline: 2rem;
+  margin-inline: auto;
+  max-width: 70rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bg-dark {
+  background-color: hsl(var(--clr-dark));
+}
+
+.bg-light {
+  background-color: hsl(var(--clr-light));
+}
+
+.bg-white {
+  background-color: hsl(var(--clr-white));
+}
+
+.text-dark {
+  color: hsl(var(--clr-dark));
+}
+
+.text-light {
+  color: hsl(var(--clr-light));
+}
+
+.text-white {
+  color: hsl(var(--clr-white));
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.fs-900 {
+  font-size: var(--fs-900);
+}
+
+.fs-800 {
+  font-size: var(--fs-800);
+}
+
+.fs-700 {
+  font-size: var(--fs-700);
+}
+
+.fs-600 {
+  font-size: var(--fs-600);
+}
+
+.fs-500 {
+  font-size: var(--fs-500);
+}
+
+.fs-400 {
+  font-size: var(--fs-400);
+}
+
+.fs-300 {
+  font-size: var(--fs-300);
+}
+
+.fs-200 {
+  font-size: var(--fs-200);
+}
+
+.fs-900,
+.fs-800,
+.fs-700,
+.fs-600 {
+  line-height: 1.1;
+}
+
+/* ----------------- */
+/* Components        */
+/* ----------------- */
+
+/* header */
+
+.header {
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 3px solid hsl(var(--clr-light));
+  margin-bottom: 1rem;
+}
+
+.logo {
+  align-items: center;
+}
+
+.logo img {
+  max-height: 5rem;
+}
+
+.navigation {
+  position: fixed;
+  inset: 0 0 0 65%;
+  z-index: 10;
+  list-style: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 0;
+  margin: 0;
+  background-color: hsl(var(--clr-white));
+  border-left: 3px solid hsl(var(--clr-dark));
+  transform: translateX(100%);
+  transition: 300ms ease-in-out;
+}
+
+.navigation.show-menu {
+  transform: translateX(0);
+}
+
+.navigation a {
+  text-align: center;
+  color: hsl(var(--clr-dark));
+}
+
+.mobile-nav-toogle {
+  display: block;
+  z-index: 20;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: hsl(var(--clr-dark));
+}
+
+@media (min-width: 40rem) {
+  .navigation {
+    position: static;
+    flex-direction: row;
+    padding: 0;
+    border: none;
+    transform: translateX(0);
+  }
+
+  .mobile-nav-toogle {
+    display: none;
+  }
+}
+
+/* buttons */
+
+.btn {
+  padding: 0.5rem 1.25rem;
+  text-align: center;
+  border: 2px solid hsl(var(--clr-dark));
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 300ms ease;
+  position: relative;
+  display: inline-block;
+}
+
+.btn:hover {
+  color: hsl(var(--clr-white));
+  background-color: hsl(var(--clr-dark));
+}
+
+.btn-icon {
+  font-size: 1rem;
+  padding: 0.125rem 0.25rem;
+  margin-inline: 0.25rem;
+  text-align: center;
+  border: 1px solid hsl(var(--clr-dark));
+  background-color: hsl(var(--clr-white));
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+
+.btn-icon:hover {
+  color: hsl(var(--clr-white));
+  background-color: hsl(var(--clr-dark));
+}
+
+.btn-danger {
+  color: red;
+  border-color: red;
+  background-color: hsl(var(--clr-light) / 0.05);
+}
+
+.btn-danger:hover {
+  background-color: red;
+}
+
+.btn-ok {
+  color: green;
+  border-color: green;
+  background-color: hsl(var(--clr-light) / 0.05);
+}
+
+.btn-ok:hover {
+  background-color: green;
+}
+
+/* form */
+.form {
+  margin-inline: auto;
+  max-width: 20rem;
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-group input {
+  margin-left: 0.5rem;
+}
+
+/* Spinner */
+.SpinnerContainer {
+  height: 80vh;
+  display: grid;
+  place-items: center;
+}
+
+.loadingSpinner {
+  position: relative;
+  width: 5rem;
+  aspect-ratio: 1;
+  border: 8px solid #fff;
+  border-top: 8px solid hsl(var(--clr-dark));
+  border-radius: 50%;
+  animation: spin 1000ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* tabela */
+table {
+  border-collapse: collapse;
+  max-width: 45rem;
+  width: 100%;
+  margin: 1rem auto;
+}
+
+table th,
+table td {
+  border: 1px solid hsl(var(--clr-light));
+  text-align: center;
+  padding: 0.5rem;
+}
+
+tr:nth-of-type(even) {
+  background-color: hsl(var(--clr-light) / 0.25);
+}
+
+table a {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* modal */
+.modalBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(var(--clr-dark) / 0.5);
+}
+
+.modalContainer {
+  width: min(80%, 30rem);
+  border-radius: 1rem;
+  background-color: hsl(var(--clr-white));
+  box-shadow: rgb(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: space-evenly;
+}
